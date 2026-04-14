@@ -1,0 +1,89 @@
+@model Biblioteca.Models.Livro
+@{
+    Layout = "_Layout";
+}
+
+<div class="container py-5 text-center">
+    <h1 style="font-family: 'Cinzel', serif; font-weight: bold;">SOBRE O AUTOR</h1>
+
+    @if (Model.Autor == "J. R. R. Tolkien")
+    {
+        <img src="~/img/jr.png" style="width: 200px; border-radius: 50%; margin: 20px 0;">
+        <h3 style="font-family: 'Cinzel', serif;">@Model.Autor</h3>
+        <p><strong>Nascimento:</strong> 3 de janeiro de 1892</p>
+        <p><strong>Falecimento:</strong> 2 de setembro de 1973</p>
+        
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Bibliografia</h4>
+        <p class="mx-auto" style="max-width: 800px; text-align: justify;">
+            John Ronald Reuel Tolkien foi um escritor, professor universitário e filólogo britânico, amplamente reconhecido como o “pai da fantasia moderna”. Nasceu na África do Sul, mas foi criado na Inglaterra. Desde jovem demonstrava grande interesse por línguas e mitologia, o que influenciou profundamente sua obra. Durante a Primeira Guerra Mundial, serviu no exército britânico, experiência que impactou sua visão de mundo e aparece indiretamente em seus escritos. Mais tarde, tornou-se professor na Universidade de Oxford, onde ensinou língua e literatura inglesa. Tolkien criou um universo extremamente detalhado, a Terra-média, com história própria, culturas e até idiomas completos, como o élfico. Sua escrita se destaca pela profundidade e pela construção de mundos complexos, abordando temas como amizade, coragem, sacrifício e a luta entre o bem e o mal.
+        </p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Obras conhecidas:</h4>
+        <ul style="list-style: none; padding: 0;">
+            <li>• O Senhor dos Anéis</li>
+            <li>• O Hobbit</li>
+            <li>• O Silmarillion</li>
+        </ul>
+    }
+    else if (Model.Autor == "J.K. Rowling")
+    {
+        <img src="~/img/harry.png" style="width: 200px; border-radius: 50%; margin: 20px 0;">
+        <h3 style="font-family: 'Cinzel', serif;">@Model.Autor</h3>
+        <p><strong>Nascimento:</strong> 31 de julho de 1965</p>
+        <p><strong>Falecimento:</strong> Viva</p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Bibliografia</h4>
+        <p class="mx-auto" style="max-width: 800px; text-align: justify;">
+            Joanne Kathleen Rowling é uma escritora britânica que se tornou uma das autoras mais famosas do mundo com a série Harry Potter. Nascida na Inglaterra, teve uma infância marcada pelo interesse por leitura e escrita. Antes do sucesso, passou por um período difícil: enfrentou problemas financeiros, foi mãe solo e chegou a depender de ajuda do governo. Foi nesse contexto que começou a escrever Harry Potter, muitas vezes em cafés. Com a publicação do primeiro livro, em 1997, sua vida mudou completamente. A saga se tornou um fenômeno mundial, sendo traduzida para dezenas de idiomas e adaptada para o cinema. Sua obra é reconhecida por abordar temas como amizade, coragem, preconceito e escolhas morais.
+        </p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Obras conhecidas:</h4>
+        <ul style="list-style: none; padding: 0;">
+            <li>• Harry Potter (série)</li>
+            <li>• Animais Fantásticos e Onde Habitam</li>
+            <li>• Morte Súbita</li>
+        </ul>
+    }
+    else if (Model.Autor == "Victoria Aveyard")
+    {
+        <img src="~/img/victoria.png" style="width: 200px; border-radius: 50%; margin: 20px 0;">
+        <h3 style="font-family: 'Cinzel', serif;">@Model.Autor</h3>
+        <p><strong>Nascimento:</strong> 27 de julho de 1990</p>
+        <p><strong>Falecimento:</strong> Viva</p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Bibliografia</h4>
+        <p class="mx-auto" style="max-width: 800px; text-align: justify;">
+            Victoria Aveyard é uma escritora americana de fantasia jovem adulta. Nascida nos Estados Unidos, formou-se em cinema e televisão, o que contribuiu para o estilo visual e dinâmico de sua escrita. Ela ganhou reconhecimento mundial com a série A Rainha Vermelha, publicada em 2015, que rapidamente se tornou um sucesso entre jovens leitores. Suas histórias costumam misturar fantasia com temas políticos e sociais, como desigualdade, poder e revolução. Aveyard se destaca por criar protagonistas femininas fortes e por desenvolver narrativas cheias de reviravoltas, intrigas e conflitos morais.
+        </p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Obras conhecidas:</h4>
+        <ul style="list-style: none; padding: 0;">
+            <li>• A Rainha Vermelha (série)</li>
+            <li>• Realm Breaker</li>
+            <li>• Blade Breaker</li>
+        </ul>
+    }
+    else if (Model.Autor == "Rick Riordan")
+    {
+        <img src="~/img/rick.png" style="width: 200px; border-radius: 50%; margin: 20px 0;">
+        <h3 style="font-family: 'Cinzel', serif;">@Model.Autor</h3>
+        <p><strong>Nascimento:</strong> 5 de junho de 1964</p>
+        <p><strong>Falecimento:</strong> Vivo</p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Bibliografia</h4>
+        <p class="mx-auto" style="max-width: 800px; text-align: justify;">
+            Rick Riordan é um escritor americano conhecido por popularizar a mitologia entre jovens leitores. Antes de se tornar autor em tempo integral, trabalhou como professor de história e inglês, o que influenciou sua forma didática e envolvente de contar histórias. Ele ganhou fama com a série Percy Jackson e os Olimpianos, criada inicialmente para seu filho, que tinha dificuldades de aprendizagem. A ideia era tornar a mitologia grega mais acessível e interessante. O sucesso foi imediato, e Riordan expandiu seu universo com outras séries baseadas em diferentes mitologias, como a egípcia e a nórdica. Suas obras são conhecidas pelo humor, ritmo rápido e personagens cativantes.
+        </p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Obras conhecidas:</h4>
+        <ul style="list-style: none; padding: 0;">
+            <li>• Percy Jackson e os Olimpianos</li>
+            <li>• Os Heróis do Olimpo</li>
+            <li>• As Crônicas dos Kane</li>
+            <li>• Magnus Chase e os Deuses de Asgard</li>
+        </ul>
+    }
+
+    <br />
+    <a asp-action="Index" class="btn btn-dark mt-4" style="background: #4b3621; border: none; padding: 10px 20px;">VOLTAR AO INÍCIO</a>
+</div>

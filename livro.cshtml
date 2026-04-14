@@ -1,0 +1,88 @@
+@model Biblioteca.Models.Livro
+@{
+    Layout = "_Layout";
+    var id = ViewData["LivroId"];
+}
+
+<style>
+    /* ... Seus estilos permanecem os mesmos ... */
+    .detalhes-container { padding: 60px 0; min-height: 80vh; }
+    .capa-detalhe { width: 100%; max-width: 350px; border-radius: 10px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
+    .info-label { font-weight: bold; color: #4b3621; }
+    .sinopse-texto { text-align: justify; line-height: 1.6; margin-top: 20px; color: #555; }
+    .header-detalhes { font-family: 'Cinzel', serif; border-bottom: 2px solid #4b3621; padding-bottom: 10px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
+</style>
+
+<div class="container detalhes-container">
+    <div class="row">
+        <div class="col-md-5 text-center">
+            @* Lógica da Imagem Corrigida *@
+            @{
+                string imagemCapa = Model.Id switch {
+                    1 => "ANEL.JPG",
+                    2 => "potter.jpg",
+                    3 => "rainha.jpg",
+                    4 => "percy.jpg",
+                    _ => "default.jpg"
+                };
+            }
+            <img src="~/img/@imagemCapa" class="capa-detalhe" alt="Capa de @Model.Titulo">
+        </div>
+
+        <div class="col-md-7">
+            <div class="header-detalhes">
+                <h1 style="font-size: 1.8rem; margin: 0;">DETALHES DA OBRA</h1>
+                <div>
+                    <a asp-action="Autor" asp-route-id="@Model.Id" class="btn btn-sm btn-dark" style="background: #4b3621; border-radius: 0;">AUTOR</a>
+                    <a asp-action="Index" class="btn btn-sm btn-outline-dark" style="border-radius: 0;">VOLTAR</a>
+                </div>
+            </div>
+
+            <div class="dados-tecnicos">
+                <p><span class="info-label">Gênero:</span> @Model.Genero</p>
+                <p><span class="info-label">Autor:</span> @Model.Autor</p>
+                <p><span class="info-label">Publicação:</span> @Model.DataPublicacao</p>
+                <p><span class="info-label">Páginas:</span> @Model.NumPaginas</p>
+            </div>
+<div class="header-detalhes">
+    <h1 style="font-size: 1.8rem; margin: 0;">@Model.Titulo</h1>
+        
+</div>
+
+
+</script>
+            <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">SINOPSE:</h4>
+           <div class="sinopse-texto">
+                @if (Model.Id == 1) {
+                    <text>Em uma terra antiga, onde a magia ainda ecoa entre florestas, montanhas e reinos esquecidos, uma sombra volta a crescer silenciosamente. Um anel, forjado nas trevas com o poder de dominar todos os povos, ressurge após anos perdido e acaba nas mãos de um simples hobbit, alguém pequeno demais para carregar um destino tão grandioso.
+                    De repente, aquilo que parecia apenas uma vida tranquila se transforma em uma jornada perigosa e sem volta. Para impedir que o mal se espalhe, ele precisará deixar tudo para trás e atravessar caminhos desconhecidos, onde cada passo pode ser o último.
+                    Ao seu lado, companheiros de diferentes terras e histórias se unem, formando uma aliança improvável movida por um único objetivo: proteger aquilo que ainda resta de luz.
+                    Mas a jornada não será apenas contra inimigos visíveis. O verdadeiro perigo também vive dentro de cada um — na dúvida, no medo e na tentação do poder absoluto. À medida que o anel revela sua influência, escolhas difíceis precisarão ser feitas, e nem todos resistirão ao seu chamado.
+                    Enquanto grandes batalhas se desenrolam e exércitos marcham rumo à guerra, o destino do mundo repousa nas mãos de quem menos se espera. Em meio à escuridão crescente, a esperança sobrevive nos gestos mais simples, na lealdade inabalável e na coragem de continuar, mesmo quando tudo parece perdido.
+                    Entre perdas, sacrifícios e momentos de pura bravura, a jornada revela que o verdadeiro poder não está na força ou na grandeza, mas na capacidade de resistir, de proteger o que se ama e de lutar pelo bem, mesmo diante de um mal que parece impossível de vencer. Pois, se o anel não for destruído, a escuridão consumirá tudo, e não haverá mais espaço para a esperança na Terra-média.</text>
+                } 
+                else if (Model.Id == 2) {
+                    <text>Vivendo à margem de uma vida comum e sem qualquer afeto verdadeiro, um garoto cresce acreditando ser apenas mais um entre tantos outros — até o dia em que descobre que sua história é tudo, menos comum. Ao receber um misterioso convite para ingressar em uma escola de magia, ele é lançado em um mundo completamente novo, repleto de encantos, perigos e segredos que estavam escondidos desde o seu nascimento.
+                    Nesse novo universo, ele não apenas aprende feitiços e explora lugares fascinantes, mas também começa a entender quem realmente é. Ao lado de amigos leais, constrói laços que se tornam essenciais para enfrentar desafios inesperados, enquanto descobre que o mundo mágico guarda ameaças tão grandes quanto suas maravilhas.
+                    Por trás das paredes da escola, algo antigo e extremamente poderoso está sendo protegido — um objeto capaz de conceder imortalidade e riquezas inimagináveis. No entanto, forças sombrias se aproximam, determinadas a encontrá-lo. Conforme pistas surgem e mistérios se aprofundam, o jovem percebe que seu passado está diretamente ligado a um dos nomes mais temidos daquele mundo, e que o perigo pode estar mais próximo do que imagina.
+                    Entre criaturas mágicas, enigmas intrigantes e momentos de tensão crescente, ele precisará enfrentar seus medos, confiar em seus amigos e tomar decisões que podem mudar tudo. Mais do que uma jornada de descobertas, essa é uma história sobre coragem, amizade e a força de escolher o que é certo, mesmo diante do desconhecido. Em um cenário onde o bem e o mal começam a se desenhar com mais clareza, fica evidente que grandes destinos podem surgir dos lugares mais improváveis — e que até mesmo alguém aparentemente comum pode carregar dentro de si um poder capaz de transformar o mundo.</text>
+                } 
+                else if (Model.Id == 3) {
+                    <text>Em um mundo dividido pelo sangue, onde a posição de cada pessoa é determinada pela cor que corre em suas veias, a sociedade é rigidamente separada entre dois grupos: os Vermelhos, comuns e oprimidos, e os Prateados, uma elite poderosa dotada de habilidades sobrenaturais que os tornam quase deuses.
+                    Mare Barrow, uma jovem Vermelha, cresceu em meio à pobreza e à falta de perspectivas, acreditando que seu destino já estava traçado. No entanto, tudo muda quando um acontecimento inesperado revela nela um poder impossível, algo que não deveria existir em alguém de sangue vermelho. De repente, aquilo que era apenas sobrevivência se transforma em perigo constante.
+                    Para esconder essa anomalia, Mare é levada para dentro do mundo dos Prateados e forçada a assumir uma nova identidade, vivendo entre aqueles que governam e oprimem seu povo. Cercada por intrigas, mentiras e jogos políticos, ela passa a fazer parte de um ambiente onde ninguém é totalmente confiável e cada passo pode ser fatal.
+                    Enquanto tenta se adaptar a essa nova realidade, Mare se vê envolvida em uma teia de poder, alianças e traições, onde suas escolhas podem desencadear uma revolução. Dividida entre dois mundos e pressionada por forças muito maiores do que ela, precisará decidir quem realmente é, e até onde está disposta a ir para mudar seu destino.
+                    Uma história intensa sobre desigualdade, identidade e resistência, em que o poder pode ser tanto uma arma quanto uma maldição — e onde até mesmo uma única pessoa pode desafiar toda uma ordem estabelecida.</text>
+                } 
+                else if (Model.Id == 4) {
+                    <text>A vida de um garoto aparentemente comum sempre foi marcada por problemas, mudanças constantes e a sensação de não se encaixar em lugar nenhum. Mas tudo muda quando acontecimentos estranhos começam a acontecer ao seu redor, revelando que sua realidade é muito mais complexa do que ele imaginava.
+                    Ao descobrir que pertence a um mundo secreto onde deuses da mitologia ainda existem e influenciam o destino dos humanos, ele é lançado em uma jornada perigosa e inesperada. Acusado de um crime que não cometeu, o roubo de um objeto poderoso capaz de desencadear uma guerra entre os deuses, ele precisa provar sua inocência antes que seja tarde demais.
+                    Ao lado de novos aliados, ele atravessa lugares desconhecidos, enfrenta criaturas mitológicas e supera desafios que testam sua coragem e inteligência. Cada passo o aproxima da verdade, mas também o coloca cada vez mais em risco, em um cenário onde deuses são imprevisíveis e inimigos podem surgir de onde menos se espera.
+                    Entre batalhas, descobertas e revelações sobre sua própria identidade, ele aprende que o destino pode ser moldado pelas escolhas que fazemos. Em uma corrida contra o tempo, precisará enfrentar forças muito maiores do que ele e entender qual é o seu verdadeiro papel nesse mundo.
+                    Uma aventura envolvente que mistura ação, mitologia e humor, mostrando que até mesmo alguém considerado "problemático" pode se tornar um herói, e que coragem não é a ausência de medo, mas a decisão de enfrentá-lo.</text>
+                }
+                
+            </div>
+        </div>
+    </div>
+</div>
