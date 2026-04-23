@@ -1,0 +1,230 @@
+@model Biblioteca.Models.Livro
+@{
+    Layout = "_Layout";
+}
+
+<div class="container py-5 text-center">
+    <h1 style="font-family: 'Cinzel', serif; font-weight: bold;">SOBRE O AUTOR</h1>
+
+    @if (Model.Autor == "J. R. R. Tolkien")
+    {
+        <img src="~/img/jr.png" style="width: 200px; border-radius: 50%; margin: 20px 0;">
+        <h3 style="font-family: 'Cinzel', serif;">@Model.Autor</h3>
+        <p><strong>Nascimento:</strong> 3 de janeiro de 1892</p>
+        <p><strong>Falecimento:</strong> 2 de setembro de 1973</p>
+        
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Bibliografia</h4>
+        <p class="mx-auto" style="max-width: 800px; text-align: justify;">
+            John Ronald Reuel Tolkien foi um escritor, professor universitário e filólogo britânico, amplamente reconhecido como o “pai da fantasia moderna”. Criou a Terra-média, com história própria, culturas e até idiomas completos, como o élfico. Sua escrita se destaca pela profundidade e pela construção de mundos complexos.
+        </p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Obras conhecidas:</h4>
+        <ul style="list-style: none; padding: 0;">
+            <li>• O Senhor dos Anéis</li>
+            <li>• O Hobbit</li>
+            <li>• O Silmarillion</li>
+        </ul>
+    }
+    else if (Model.Autor == "J.K. Rowling")
+    {
+        <img src="~/img/harry.png" style="width: 200px; border-radius: 50%; margin: 20px 0;">
+        <h3 style="font-family: 'Cinzel', serif;">@Model.Autor</h3>
+        <p><strong>Nascimento:</strong> 31 de julho de 1965</p>
+        <p><strong>Falecimento:</strong> Viva</p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Bibliografia</h4>
+        <p class="mx-auto" style="max-width: 800px; text-align: justify;">
+            Joanne Kathleen Rowling é uma escritora britânica que se tornou uma das autoras mais famosas do mundo com a série Harry Potter. Sua obra é reconhecida por abordar temas como amizade, coragem, preconceito e escolhas morais.
+        </p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Obras conhecidas:</h4>
+        <ul style="list-style: none; padding: 0;">
+            <li>• Harry Potter (série)</li>
+            <li>• Animais Fantásticos</li>
+            <li>• Morte Súbita</li>
+        </ul>
+    }
+    else if (Model.Autor == "Victoria Aveyard")
+    {
+        <img src="~/img/victoria.png" style="width: 200px; border-radius: 50%; margin: 20px 0;">
+        <h3 style="font-family: 'Cinzel', serif;">@Model.Autor</h3>
+        <p><strong>Nascimento:</strong> 27 de julho de 1990</p>
+        <p><strong>Falecimento:</strong> Viva</p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Bibliografia</h4>
+        <p class="mx-auto" style="max-width: 800px; text-align: justify;">
+            Victoria Aveyard é uma escritora americana de fantasia jovem adulta. Formou-se em cinema e televisão, o que contribuiu para o estilo visual de sua escrita na série A Rainha Vermelha.
+        </p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Obras conhecidas:</h4>
+        <ul style="list-style: none; padding: 0;">
+            <li>• A Rainha Vermelha</li>
+            <li>• Realm Breaker</li>
+        </ul>
+    }
+    else if (Model.Autor == "Rick Riordan")
+    {
+        <img src="~/img/rick.png" style="width: 200px; border-radius: 50%; margin: 20px 0;">
+        <h3 style="font-family: 'Cinzel', serif;">@Model.Autor</h3>
+        <p><strong>Nascimento:</strong> 5 de junho de 1964</p>
+        <p><strong>Falecimento:</strong> Vivo</p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Bibliografia</h4>
+        <p class="mx-auto" style="max-width: 800px; text-align: justify;">
+            Rick Riordan é um escritor americano conhecido por popularizar a mitologia entre jovens leitores com a série Percy Jackson. Suas obras são conhecidas pelo humor e ritmo rápido.
+        </p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Obras conhecidas:</h4>
+        <ul style="list-style: none; padding: 0;">
+            <li>• Percy Jackson</li>
+            <li>• As Crônicas dos Kane</li>
+        </ul>
+    }
+    else if (Model.Autor == "C. S. Lewis")
+    {
+        <img src="~/img/lewis.png" style="width: 200px; border-radius: 50%; margin: 20px 0;">
+        <h3 style="font-family: 'Cinzel', serif;">@Model.Autor</h3>
+        <p><strong>Nascimento:</strong> 29 de novembro de 1898</p>
+        <p><strong>Falecimento:</strong> 22 de novembro de 1963</p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Bibliografia</h4>
+        <p class="mx-auto" style="max-width: 800px; text-align: justify;">
+            Clive Staples Lewis foi um professor, teólogo e escritor britânico. Grande amigo de Tolkien, é mundialmente famoso pelas Crônicas de Nárnia, onde explorou temas de moralidade e fé através da fantasia.
+        </p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Obras conhecidas:</h4>
+        <ul style="list-style: none; padding: 0;">
+            <li>• As Crônicas de Nárnia</li>
+            <li>• Cristianismo Puro e Simples</li>
+        </ul>
+    }
+    else if (Model.Autor == "Christopher Paolini")
+    {
+        <img src="~/img/paolini.jpg" style="width: 200px; border-radius: 50%; margin: 20px 0;">
+        <h3 style="font-family: 'Cinzel', serif;">@Model.Autor</h3>
+        <p><strong>Nascimento:</strong> 17 de novembro de 1983</p>
+        <p><strong>Falecimento:</strong> Vivo</p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Bibliografia</h4>
+        <p class="mx-auto" style="max-width: 800px; text-align: justify;">
+            Paolini começou a escrever Eragon aos 15 anos. Ele criou o mundo de Alagaësia inspirado nas montanhas de Montana, tornando-se um dos autores mais jovens a atingir o topo das listas de mais vendidos.
+        </p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Obras conhecidas:</h4>
+        <ul style="list-style: none; padding: 0;">
+            <li>• Eragon</li>
+            <li>• Eldest</li>
+        </ul>
+    }
+    else if (Model.Autor == "Philip Pullman")
+    {
+        <img src="~/img/pullman.png" style="width: 200px; border-radius: 50%; margin: 20px 0;">
+        <h3 style="font-family: 'Cinzel', serif;">@Model.Autor</h3>
+        <p><strong>Nascimento:</strong> 19 de outubro de 1946</p>
+        <p><strong>Falecimento:</strong> Vivo</p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Bibliografia</h4>
+        <p class="mx-auto" style="max-width: 800px; text-align: justify;">
+            Escritor britânico conhecido pela trilogia Fronteiras do Universo. Pullman é reconhecido por desafiar convenções e explorar temas complexos de filosofia e física quântica.
+        </p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Obras conhecidas:</h4>
+        <ul style="list-style: none; padding: 0;">
+            <li>• A Bússola de Ouro</li>
+            <li>• A Faca Sutil</li>
+        </ul>
+    }
+    else if (Model.Autor == "Patrick Rothfuss")
+    {
+        <img src="~/img/rothfuss.png" style="width: 200px; border-radius: 50%; margin: 20px 0;">
+        <h3 style="font-family: 'Cinzel', serif;">@Model.Autor</h3>
+        <p><strong>Nascimento:</strong> 6 de junho de 1973</p>
+        <p><strong>Falecimento:</strong> Vivo</p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Bibliografia</h4>
+        <p class="mx-auto" style="max-width: 800px; text-align: justify;">
+            Patrick Rothfuss conquistou o mundo com sua prosa lírica em A Crônica do Matador do Rei. Seu trabalho é elogiado pela profundidade psicológica e pelo sistema de magia lógico.
+        </p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Obras conhecidas:</h4>
+        <ul style="list-style: none; padding: 0;">
+            <li>• O Nome do Vento</li>
+            <li>• O Temor do Homem Sábio</li>
+        </ul>
+    }
+    else if (Model.Autor == "Ursula K. Le Guin")
+    {
+        <img src="~/img/leguin.png" style="width: 200px; border-radius: 50%; margin: 20px 0;">
+        <h3 style="font-family: 'Cinzel', serif;">@Model.Autor</h3>
+        <p><strong>Nascimento:</strong> 1929</p>
+        <p><strong>Falecimento:</strong> 2018</p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Bibliografia</h4>
+        <p class="mx-auto" style="max-width: 800px; text-align: justify;">
+            Uma gigante da ficção e fantasia, Le Guin introduziu temas de antropologia e ecologia em suas obras. Terramar é considerada uma das bases da fantasia moderna.
+        </p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Obras conhecidas:</h4>
+        <ul style="list-style: none; padding: 0;">
+            <li>• O Mago de Terramar</li>
+            <li>• As Tumbas de Atuan</li>
+        </ul>
+    }
+    else if (Model.Autor == "Cassandra Clare")
+    {
+        <img src="~/img/clare.png" style="width: 200px; border-radius: 50%; margin: 20px 0;">
+        <h3 style="font-family: 'Cinzel', serif;">@Model.Autor</h3>
+        <p><strong>Nascimento:</strong> 27 de julho de 1973</p>
+        <p><strong>Falecimento:</strong> Viva</p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Bibliografia</h4>
+        <p class="mx-auto" style="max-width: 800px; text-align: justify;">
+            Cassandra Clare é a mente por trás do universo dos Caçadores de Sombras. Ela mistura o mundo moderno com mitologias ancestrais e romances intensos.
+        </p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Obras conhecidas:</h4>
+        <ul style="list-style: none; padding: 0;">
+            <li>• Cidade dos Ossos</li>
+            <li>• Anjo Mecânico</li>
+        </ul>
+    }
+    else if (Model.Autor == "Michael Scott")
+    {
+        <img src="~/img/scott.png" style="width: 200px; border-radius: 50%; margin: 20px 0;">
+        <h3 style="font-family: 'Cinzel', serif;">@Model.Autor</h3>
+        <p><strong>Nascimento:</strong> 28 de setembro de 1959</p>
+        <p><strong>Falecimento:</strong> Vivo</p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Bibliografia</h4>
+        <p class="mx-auto" style="max-width: 800px; text-align: justify;">
+            Escritor irlandês e autoridade em folclore. Michael Scott utiliza seu conhecimento histórico para criar narrativas onde figuras reais do passado interagem com o mundo moderno.
+        </p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Obras conhecidas:</h4>
+        <ul style="list-style: none; padding: 0;">
+            <li>• O Alquimista</li>
+            <li>• O Mago</li>
+        </ul>
+    }
+    else if (Model.Autor == "Neil Gaiman")
+    {
+        <img src="~/img/gaiman.png" style="width: 200px; border-radius: 50%; margin: 20px 0;">
+        <h3 style="font-family: 'Cinzel', serif;">@Model.Autor</h3>
+        <p><strong>Nascimento:</strong> 10 de novembro de 1960</p>
+        <p><strong>Falecimento:</strong> Vivo</p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Bibliografia</h4>
+        <p class="mx-auto" style="max-width: 800px; text-align: justify;">
+            Neil Gaiman é mestre em criar fantasias urbanas sombrias. Suas obras exploram a natureza humana e o poder das histórias em mundos oníricos.
+        </p>
+
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">Obras conhecidas:</h4>
+        <ul style="list-style: none; padding: 0;">
+            <li>• Neverwhere</li>
+            <li>• Sandman</li>
+        </ul>
+    }
+
+    <br />
+    <a asp-action="Index" class="btn btn-dark mt-4" style="background: #4b3621; border: none; padding: 10px 20px;">VOLTAR AO INÍCIO</a>
+</div>

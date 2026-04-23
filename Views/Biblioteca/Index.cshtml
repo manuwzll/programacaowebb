@@ -1,0 +1,255 @@
+@{
+    Layout = "_Layout";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+    /* Hero Banner */
+    .hero-banner {
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66');
+        background-size: cover; background-position: center;
+        height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center;
+    }
+    .hero-banner h1 { font-family: 'Cinzel', serif; font-size: 2.2rem; letter-spacing: 4px; }
+    .hero-subtitle { color: #c4a484; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
+
+    /* Barra de Pesquisa */
+    .search-wrapper { margin: -30px auto 40px; max-width: 600px; position: relative; z-index: 10; }
+    .search-input {
+        width: 100%; padding: 15px 25px; border-radius: 50px; border: 2px solid #4b3621;
+        font-family: 'Lato', sans-serif; font-size: 1rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1); outline: none;
+        background-color: white;
+    }
+
+    /* Seção Sobre Nós - Bordas Arredondadas e Design Elegante */
+    .about-section { 
+        padding: 40px; 
+        background-color: #fdfdfd; 
+        max-width: 900px; 
+        margin: 20px auto 50px; 
+        text-align: center;
+        border-radius: 30px; /* Bordas bem arredondadas */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Sombra suave */
+        border: 1px solid #eee;
+    }
+    .about-section h2 { font-family: 'Cinzel', serif; color: #4b3621; margin-bottom: 20px; font-weight: 700; }
+    .about-section p { font-family: 'Lato', sans-serif; color: #555; line-height: 1.8; font-size: 1.1rem; margin: 0; }
+
+    /* Títulos das Seções */
+    .section-title { 
+        font-family: 'Cinzel', serif; 
+        font-weight: 700; 
+        font-size: 1.5rem;
+        margin-top: 50px; 
+        color: #4b3621; 
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+    }
+    .section-title::after {
+        content: ""; width: 60px; height: 3px; background: #c4a484;
+        position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    }
+
+    /* Grid e Cards */
+    .book-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; padding: 20px 0; }
+    .book-card { width: 180px; text-align: center; margin-bottom: 20px; transition: 0.3s; }
+    .book-card:hover { transform: translateY(-5px); }
+    .book-card img { width: 100%; height: 260px; object-fit: cover; border-radius: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+    .book-card h6 { font-family: 'Cinzel', serif; margin-top: 12px; font-weight: bold; font-size: 0.85rem; min-height: 40px; color: #333; }
+    
+    .btn-saiba { 
+        font-size: 0.7rem; font-weight: bold; color: #4b3621; text-decoration: none; 
+        border: 1px solid #4b3621; padding: 5px 10px; transition: 0.3s; 
+    }
+    .btn-saiba:hover { background: #4b3621; color: white; }
+
+    /* Mensagem de Erro */
+    #search-fallback { 
+        display: none; padding: 60px; font-family: 'Cinzel', serif; color: #888; font-size: 1.2rem; 
+    }
+
+    /* Botão Catálogo */
+    .btn-acesso-total {
+        background: #4b3621; color: white; font-family: 'Cinzel', serif;
+        padding: 15px 40px; border: none; cursor: pointer; font-weight: bold;
+        transition: 0.3s; margin: 40px 0; letter-spacing: 2px; border-radius: 5px;
+    }
+
+    /* Utilitários */
+    .item-hidden { display: none !important; }
+    #catalogo-completo { display: none; background-color: #fcfaf8; padding: 40px 0; border-top: 1px solid #eee; }
+</style>
+
+<section class="hero-banner">
+    <h1>ONDE CADA PÁGINA É UM NOVO HORIZONTE</h1>
+    <p class="hero-subtitle">SUA JORNADA COMEÇA AQUI</p>
+</section>
+
+<div class="container text-center">
+    
+    <div class="search-wrapper">
+        <input type="text" id="inputBusca" class="search-input" placeholder="Procure por título ou autor..." onkeyup="filtrarLivros()">
+    </div>
+
+    <section class="about-section" id="section-sobre">
+        <h2>SOBRE NÓS</h2>
+        <p>
+            Bem-vindo à nossa Biblioteca Digital. Somos apaixonados por mundos fantásticos e histórias que transcendem o tempo. 
+            Nosso catálogo foi cuidadosamente selecionado para oferecer as melhores experiências em literatura de fantasia, 
+            mitologia e ficção. Acreditamos que um livro é um portal, e nossa missão é ajudar você a encontrar sua próxima grande aventura.
+        </p>
+    </section>
+
+    <div id="search-fallback">
+        <p>Infelizmente, este tomo ainda não faz parte da nossa coleção.</p>
+    </div>
+
+    <div id="container-resultados" class="item-hidden">
+        <h4 class="section-title">Resultados da Busca</h4>
+        <div id="grid-resultados" class="book-grid">
+            </div>
+    </div>
+
+    <div id="conteudo-principal">
+        <div id="section-destaques">
+            <h4 class="section-title">Destaques da Semana</h4>
+            <div class="book-grid">
+                <div class="book-card" data-search="senhor dos aneis j. r. r. tolkien">
+                    <a asp-action="Livro" asp-route-id="1"><img src="~/img/ANEL.JPG"></a>
+                    <h6>SENHOR DOS ANÉIS</h6>
+                    <a asp-action="Livro" asp-route-id="1" class="btn-saiba">VER OBRA</a>
+                </div>
+                <div class="book-card" data-search="harry potter j.k. rowling">
+                    <a asp-action="Livro" asp-route-id="2"><img src="~/img/potter.jpg"></a>
+                    <h6>HARRY POTTER</h6>
+                    <a asp-action="Livro" asp-route-id="2" class="btn-saiba">VER OBRA</a>
+                </div>
+                <div class="book-card" data-search="rainha vermelha victoria aveyard">
+                    <a asp-action="Livro" asp-route-id="3"><img src="~/img/rainha.jpg"></a>
+                    <h6>RAINHA VERMELHA</h6>
+                    <a asp-action="Livro" asp-route-id="3" class="btn-saiba">VER OBRA</a>
+                </div>
+                <div class="book-card" data-search="percy jackson rick riordan">
+                    <a asp-action="Livro" asp-route-id="4"><img src="~/img/percy.jpg"></a>
+                    <h6>PERCY JACKSON</h6>
+                    <a asp-action="Livro" asp-route-id="4" class="btn-saiba">VER OBRA</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="section-gostar">
+            <h4 class="section-title">Você Pode Gostar</h4>
+            <div class="book-grid">
+                <div class="book-card" data-search="as cronicas de narnia c. s. lewis">
+                    <a asp-action="Livro" asp-route-id="5"><img src="~/img/narnia.jpg"></a>
+                    <h6>AS CRÔNICAS DE NÁRNIA</h6>
+                    <a asp-action="Livro" asp-route-id="5" class="btn-saiba">DESCUBRA</a>
+                </div>
+                <div class="book-card" data-search="eragon christopher paolini">
+                    <a asp-action="Livro" asp-route-id="6"><img src="~/img/eragon.jpg"></a>
+                    <h6>ERAGON</h6>
+                    <a asp-action="Livro" asp-route-id="6" class="btn-saiba">DESCUBRA</a>
+                </div>
+                <div class="book-card" data-search="a bussola de ouro philip pullman">
+                    <a asp-action="Livro" asp-route-id="7"><img src="~/img/bussola.jpg"></a>
+                    <h6>A BÚSSOLA DE OURO</h6>
+                    <a asp-action="Livro" asp-route-id="7" class="btn-saiba">DESCUBRA</a>
+                </div>
+                <div class="book-card" data-search="o nome do vento patrick rothfuss">
+                    <a asp-action="Livro" asp-route-id="8"><img src="~/img/nomedovento.jpg"></a>
+                    <h6>O NOME DO VENTO</h6>
+                    <a asp-action="Livro" asp-route-id="8" class="btn-saiba">DESCUBRA</a>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-acesso-total" onclick="mostrarCatalogo()" id="btnCatalogo">ACESSE O CATÁLOGO</button>
+
+        <div id="catalogo-completo">
+            <h4 class="section-title">Catálogo Completo</h4>
+            <div class="book-grid">
+                <div class="book-card" data-search="senhor dos aneis tolkien"><a asp-action="Livro" asp-route-id="1"><img src="~/img/ANEL.JPG"></a><h6>SENHOR DOS ANÉIS</h6></div>
+                <div class="book-card" data-search="harry potter rowling"><a asp-action="Livro" asp-route-id="2"><img src="~/img/potter.jpg"></a><h6>HARRY POTTER</h6></div>
+                <div class="book-card" data-search="rainha vermelha aveyard"><a asp-action="Livro" asp-route-id="3"><img src="~/img/rainha.jpg"></a><h6>RAINHA VERMELHA</h6></div>
+                <div class="book-card" data-search="percy jackson riordan"><a asp-action="Livro" asp-route-id="4"><img src="~/img/percy.jpg"></a><h6>PERCY JACKSON</h6></div>
+                <div class="book-card" data-search="narnia lewis"><a asp-action="Livro" asp-route-id="5"><img src="~/img/narnia.jpg"></a><h6>AS CRÔNICAS DE NÁRNIA</h6></div>
+                <div class="book-card" data-search="eragon paolini"><a asp-action="Livro" asp-route-id="6"><img src="~/img/eragon.jpg"></a><h6>ERAGON</h6></div>
+                <div class="book-card" data-search="bussola ouro pullman"><a asp-action="Livro" asp-route-id="7"><img src="~/img/bussola.jpg"></a><h6>A BÚSSOLA DE OURO</h6></div>
+                <div class="book-card" data-search="nome do vento rothfuss"><a asp-action="Livro" asp-route-id="8"><img src="~/img/nomedovento.jpg"></a><h6>O NOME DO VENTO</h6></div>
+                <div class="book-card" data-search="mago terramar ursula le guin"><a asp-action="Livro" asp-route-id="9"><img src="~/img/terramar.jpg"></a><h6>O MAGO DE TERRAMAR</h6></div>
+                <div class="book-card" data-search="cidade dos ossos cassandra clare"><a asp-action="Livro" asp-route-id="10"><img src="~/img/cidadeossos.jpg"></a><h6>CIDADE DOS OSSOS</h6></div>
+                <div class="book-card" data-search="alquimista nicolas flamel michael scott"><a asp-action="Livro" asp-route-id="11"><img src="~/img/alquimista.jpg"></a><h6>O ALQUIMISTA (FLAMEL)</h6></div>
+                <div class="book-card" data-search="neverwhere neil gaiman"><a asp-action="Livro" asp-route-id="12"><img src="~/img/neverwhere.jpg"></a><h6>NEVERWHERE</h6></div>
+                <div class="book-card" data-search="piramide vermelha rick riordan"><a asp-action="Livro" asp-route-id="13"><img src="~/img/piramide.jpg"></a><h6>A PIRÂMIDE VERMELHA</h6></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function mostrarCatalogo() {
+        var x = document.getElementById("catalogo-completo");
+        var btn = document.getElementById("btnCatalogo");
+        if (x.style.display === "none" || x.style.display === "") {
+            x.style.display = "block";
+            btn.innerHTML = "FECHAR CATÁLOGO";
+        } else {
+            x.style.display = "none";
+            btn.innerHTML = "ACESSE O CATÁLOGO";
+        }
+    }
+
+    function filtrarLivros() {
+        var input = document.getElementById("inputBusca").value.toLowerCase();
+        var principal = document.getElementById("conteudo-principal");
+        var sobreNos = document.getElementById("section-sobre");
+        var containerResultados = document.getElementById("container-resultados");
+        var feedback = document.getElementById("search-fallback");
+        
+        // Pegamos todos os cards que existem no catálogo completo (que tem todos)
+        var todosOsCards = document.querySelectorAll("#catalogo-completo .book-card");
+        var gridResultados = document.getElementById("grid-resultados");
+
+        // Limpa o grid de resultados antes de filtrar
+        gridResultados.innerHTML = "";
+
+        if (input.trim() === "") {
+            // Se a busca estiver vazia, volta ao normal
+            principal.classList.remove("item-hidden");
+            sobreNos.classList.remove("item-hidden");
+            containerResultados.classList.add("item-hidden");
+            feedback.style.display = "none";
+            return;
+        }
+
+        // Se estiver pesquisando:
+        principal.classList.add("item-hidden");
+        sobreNos.classList.add("item-hidden");
+        
+        var encontrou = false;
+
+        todosOsCards.forEach(function(card) {
+            var searchData = card.getAttribute("data-search").toLowerCase();
+            if (searchData.indexOf(input) > -1) {
+                // Clona o card para exibir na seção de resultados
+                var clone = card.cloneNode(true);
+                clone.classList.remove("item-hidden");
+                gridResultados.appendChild(clone);
+                encontrou = true;
+            }
+        });
+
+        if (encontrou) {
+            containerResultados.classList.remove("item-hidden");
+            feedback.style.display = "none";
+        } else {
+            containerResultados.classList.add("item-hidden");
+            feedback.style.display = "block";
+        }
+    }
+</script>
