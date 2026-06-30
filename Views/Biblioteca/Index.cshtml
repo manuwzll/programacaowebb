@@ -5,7 +5,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 
 <style>
-    /* Hero Banner */
+    
     .hero-banner {
         background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66');
         background-size: cover; background-position: center;
@@ -22,21 +22,21 @@
         background-color: white;
     }
 
-    /* Seção Sobre Nós - Bordas Arredondadas e Design Elegante */
+    
     .about-section { 
         padding: 40px; 
         background-color: #fdfdfd; 
         max-width: 900px; 
         margin: 20px auto 50px; 
         text-align: center;
-        border-radius: 30px; /* Bordas bem arredondadas */
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Sombra suave */
+        border-radius: 30px; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
         border: 1px solid #eee;
     }
     .about-section h2 { font-family: 'Cinzel', serif; color: #4b3621; margin-bottom: 20px; font-weight: 700; }
     .about-section p { font-family: 'Lato', sans-serif; color: #555; line-height: 1.8; font-size: 1.1rem; margin: 0; }
 
-    /* Títulos das Seções */
+    
     .section-title { 
         font-family: 'Cinzel', serif; 
         font-weight: 700; 
@@ -68,19 +68,19 @@
     }
     .btn-saiba:hover { background: #4b3621; color: white; }
 
-    /* Mensagem de Erro */
+    
     #search-fallback { 
         display: none; padding: 60px; font-family: 'Cinzel', serif; color: #888; font-size: 1.2rem; 
     }
 
-    /* Botão Catálogo */
+    
     .btn-acesso-total {
         background: #4b3621; color: white; font-family: 'Cinzel', serif;
         padding: 15px 40px; border: none; cursor: pointer; font-weight: bold;
         transition: 0.3s; margin: 40px 0; letter-spacing: 2px; border-radius: 5px;
     }
 
-    /* Utilitários */
+    
     .item-hidden { display: none !important; }
     #catalogo-completo { display: none; background-color: #fcfaf8; padding: 40px 0; border-top: 1px solid #eee; }
 </style>
@@ -89,7 +89,36 @@
     <h1>ONDE CADA PÁGINA É UM NOVO HORIZONTE</h1>
     <p class="hero-subtitle">SUA JORNADA COMEÇA AQUI</p>
 </section>
+<div style="background:#4b3621; padding:10px; text-align:center;">
+    
+    <a asp-controller="biblioteca" asp-action="CriarAutor" 
+       style="color:white; margin-right:20px; text-decoration:none; font-family:'Cinzel', serif;">
+        Cadastrar Autor
+    </a>
 
+    <a asp-controller="biblioteca" asp-action="CriarLivro" 
+       style="color:white; text-decoration:none; font-family:'Cinzel', serif;">
+        Cadastrar Livro
+    </a>
+
+</div>
+</section>
+
+<div style="background:#4b3621; padding:10px; text-align:center;">
+    
+    <a asp-controller="biblioteca" asp-action="CriarAutor" 
+       style="color:white; margin-right:20px; text-decoration:none; font-family:'Cinzel', serif;">
+        Cadastrar Autor
+    </a>
+
+    <a asp-controller="biblioteca" asp-action="CriarLivro" 
+       style="color:white; text-decoration:none; font-family:'Cinzel', serif;">
+        Cadastrar Livro
+    </a>
+
+</div>
+
+<div class="container text-center">
 <div class="container text-center">
     
     <div class="search-wrapper">
@@ -187,7 +216,9 @@
                 <div class="book-card" data-search="neverwhere neil gaiman"><a asp-action="Livro" asp-route-id="12"><img src="~/img/neverwhere.jpg"></a><h6>NEVERWHERE</h6></div>
                 <div class="book-card" data-search="piramide vermelha rick riordan"><a asp-action="Livro" asp-route-id="13"><img src="~/img/piramide.jpg"></a><h6>A PIRÂMIDE VERMELHA</h6></div>
             </div>
+        
         </div>
+
     </div>
 </div>
 
@@ -211,15 +242,15 @@
         var containerResultados = document.getElementById("container-resultados");
         var feedback = document.getElementById("search-fallback");
         
-        // Pegamos todos os cards que existem no catálogo completo (que tem todos)
+        
         var todosOsCards = document.querySelectorAll("#catalogo-completo .book-card");
         var gridResultados = document.getElementById("grid-resultados");
 
-        // Limpa o grid de resultados antes de filtrar
+        
         gridResultados.innerHTML = "";
 
         if (input.trim() === "") {
-            // Se a busca estiver vazia, volta ao normal
+            
             principal.classList.remove("item-hidden");
             sobreNos.classList.remove("item-hidden");
             containerResultados.classList.add("item-hidden");
@@ -227,7 +258,7 @@
             return;
         }
 
-        // Se estiver pesquisando:
+        
         principal.classList.add("item-hidden");
         sobreNos.classList.add("item-hidden");
         
@@ -236,7 +267,7 @@
         todosOsCards.forEach(function(card) {
             var searchData = card.getAttribute("data-search").toLowerCase();
             if (searchData.indexOf(input) > -1) {
-                // Clona o card para exibir na seção de resultados
+                
                 var clone = card.cloneNode(true);
                 clone.classList.remove("item-hidden");
                 gridResultados.appendChild(clone);

@@ -1,0 +1,79 @@
+is_global = true
+build_property.TargetFramework = net10.0
+build_property.TargetFramework = net10.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v10.0
+build_property.RootNamespace = Biblioteca
+build_property.RootNamespace = Biblioteca
+build_property.ProjectDir = C:\Users\teste\Documents\manuemaike\Biblioteca\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\teste\Documents\manuemaike\Biblioteca
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 10.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/teste/Documents/manuemaike/Biblioteca/Views/Biblioteca/autor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYVxhdXRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teste/Documents/manuemaike/Biblioteca/Views/Biblioteca/CriarAutor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYVxDcmlhckF1dG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teste/Documents/manuemaike/Biblioteca/Views/Biblioteca/CriarLivro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYVxDcmlhckxpdnJvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teste/Documents/manuemaike/Biblioteca/Views/Biblioteca/DeletarLivro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYVxEZWxldGFyTGl2cm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teste/Documents/manuemaike/Biblioteca/Views/Biblioteca/EditarLivro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYVxFZGl0YXJMaXZyby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teste/Documents/manuemaike/Biblioteca/Views/Biblioteca/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teste/Documents/manuemaike/Biblioteca/Views/Biblioteca/livro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYVxsaXZyby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teste/Documents/manuemaike/Biblioteca/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teste/Documents/manuemaike/Biblioteca/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teste/Documents/manuemaike/Biblioteca/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teste/Documents/manuemaike/Biblioteca/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teste/Documents/manuemaike/Biblioteca/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-bunr9m1pqn

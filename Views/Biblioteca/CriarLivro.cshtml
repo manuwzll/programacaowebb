@@ -1,0 +1,92 @@
+@model CriarLivroViewModel;
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Cadastrar Livro";
+}
+
+<style>
+    .form-container {
+        max-width: 700px;
+        margin: 40px auto;
+        background: #fdfaf5;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border: 1px solid #d4c3a3;
+    }
+    .form-title {
+        font-family: 'Cinzel', serif;
+        color: #4b3621;
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 3px solid #c4a484;
+        padding-bottom: 15px;
+    }
+    .form-label {
+        font-weight: bold;
+        color: #4b3621;
+    }
+    .btn-cadastrar {
+        background: #4b3621;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        font-family: 'Cinzel', serif;
+        letter-spacing: 1px;
+    }
+    .btn-cancelar {
+        background: #8c7a6b;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+    }
+    textarea {
+        resize: vertical;
+        min-height: 200px;
+    }
+</style>
+
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-title">CADASTRAR NOVO LIVRO</h2>
+
+        <form asp-action="CriarLivro" method="post" enctype="multipart/form-data">
+            <div class="mb-4">
+                <label class="form-label">Título do Livro</label>
+                <input asp-for= "Titulo" type="text"  class="form-control" placeholder="Ex: O Senhor dos Anéis" required />
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Autor</label>
+                <input asp-for="Autor" type="text"  class="form-control" placeholder="Ex: J. R. R. Tolkien" required />
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <label class="form-label">Número de Páginas</label>
+                    <input asp-for="NumPaginas"type="number" name="numPaginas" class="form-control" min="1" required />
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label class="form-label">Capa do Livro</label>
+                    <input type="file" name="capa" class="form-control" accept="image/*" required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <label class="form-label">Autor</label>
+                        <select asp-for="AutorId" asp-items="@ViewBag.Autores "></select>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Sinopse</label>
+                <textarea  asp-for="Sinopse" name ="sinopse" class="form-control" placeholder="Escreva a sinopse do livro..." required></textarea>
+            </div>
+
+            <div class="text-center mt-5">
+                <a asp-action="Index" class="btn btn-cancelar me-3">Cancelar</a>
+                <button type="submit" class="btn btn-cadastrar">Cadastrar Livro</button>
+            </div>
+        </form>
+    </div>
+</div>

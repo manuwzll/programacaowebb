@@ -32,7 +32,7 @@
     11 => "alquimista.jpg",
     12 => "neverwhere.jpg",
     13 => "piramide.jpg",
-    _ => "default.jpg"
+    14 => "default.jpg"
             };
             }
             <img src="~/img/@imagemCapa" class="capa-detalhe" alt="Capa de @Model.Titulo">
@@ -117,6 +117,20 @@
     else if (Model.Id == 13) { 
         <text>Carter e Sadie Kane são irmãos que cresceram separados e têm uma relação distante. Durante um encontro com o pai no Museu Britânico, um acidente mágico liberta deuses egípcios antigos, incluindo o terrível deus Set, que planeja mergulhar o mundo no caos. Agora, os irmãos precisam aprender magia egípcia rapidamente e aceitar sua herança familiar para impedir a destruição total. A história combina ação intensa com a rica mitologia do Antigo Egito, mostrando o amadurecimento dos irmãos Kane diante de um destino divino.</text> 
     }
+</div>
+<div class="header-detalhes">
+    <h1 style="font-size: 1.8rem; margin: 0;">DETALHES DA OBRA</h1>
+    <div>
+        <a asp-action="EditarLivro" asp-route-id="@Model.Id" class="btn btn-sm btn-warning">EDITAR</a>
+        <a asp-action="DeletarLivro" asp-route-id="@Model.Id" class="btn btn-sm btn-danger">EXCLUIR</a>
+        <a asp-action="Autor" asp-route-id="@Model.Id" class="btn btn-sm btn-dark" style="background: #4b3621; border-radius: 0;">AUTOR</a>
+        <a asp-action="Index" class="btn btn-sm btn-outline-dark" style="border-radius: 0;">VOLTAR</a>
+    </div>
+</div>
+
+<h4 style="font-family: 'Cinzel', serif; margin-top: 30px;">SINOPSE:</h4>
+<div class="sinopse-texto">
+    (!string.IsNullOrEmpty(@Model.Sinopse ? @Model.Sinopse : "Sinopse não cadastrada no sistema.")
 </div>
            
         </div>

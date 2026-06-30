@@ -1,33 +1,25 @@
 using Microsoft.AspNetCore.Mvc;
 using Biblioteca.Models;
-
+using Biblioteca.Repositories;
+using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Biblioteca.Controllers
 {
     public class BibliotecaController : Controller
     {
-        // Lista atualizada com os 13 livros e nomes padronizados
-        private static readonly List<Livro> l1 = new List<Livro>()
+       readonly ILivroRepository _livroRepository;
+       readonly IAutorRepository _autorRepository;
+        public BibliotecaController(ILivroRepository livroRepository, IAutorRepository autorRepository)
         {
-            new Livro { Id = 1, Titulo = "Senhor dos Anéis", NumPaginas = 1200, Autor = "J. R. R. Tolkien", Genero = "Fantasia Épica", DataPublicacao = new DateOnly(1954, 7, 29) },
-            new Livro { Id = 2, Titulo = "Harry Potter", NumPaginas = 223, Autor = "J.K. Rowling", Genero = "Fantasia", DataPublicacao = new DateOnly(1997, 6, 26) },
-            new Livro { Id = 3, Titulo = "Rainha Vermelha", NumPaginas = 408, Autor = "Victoria Aveyard", Genero = "Fantasia Distópica", DataPublicacao = new DateOnly(2015, 2, 10) },
-            new Livro { Id = 4, Titulo = "Percy Jackson e o Ladrão de Raios", NumPaginas = 408, Autor = "Rick Riordan", Genero = "Fantasia / Mitologia", DataPublicacao = new DateOnly(2005, 6, 28) },
-            new Livro { Id = 5, Titulo = "O Leão, a Feiticeira e o Guarda-Roupa", NumPaginas = 200, Autor = "C. S. Lewis", Genero = "Fantasia", DataPublicacao = new DateOnly(1950, 10, 16) },
-            new Livro { Id = 6, Titulo = "Eragon", NumPaginas = 500, Autor = "Christopher Paolini", Genero = "Fantasia Épica", DataPublicacao = new DateOnly(2002, 8, 26) },
-            new Livro { Id = 7, Titulo = "A Bússola de Ouro", NumPaginas = 400, Autor = "Philip Pullman", Genero = "Fantasia / Aventura", DataPublicacao = new DateOnly(1995, 7, 9) },
-            new Livro { Id = 8, Titulo = "O Nome do Vento", NumPaginas = 650, Autor = "Patrick Rothfuss", Genero = "Fantasia", DataPublicacao = new DateOnly(2007, 3, 27) },
-            new Livro { Id = 9, Titulo = "O Mago de Terramar", NumPaginas = 200, Autor = "Ursula K. Le Guin", Genero = "Fantasia", DataPublicacao = new DateOnly(1968, 1, 1) },
-            new Livro { Id = 10, Titulo = "Cidade dos Ossos", NumPaginas = 450, Autor = "Cassandra Clare", Genero = "Fantasia Urbana", DataPublicacao = new DateOnly(2007, 3, 27) },
-            new Livro { Id = 11, Titulo = "O Alquimista: Nicolas Flamel", NumPaginas = 400, Autor = "Michael Scott", Genero = "Fantasia / Mitologia", DataPublicacao = new DateOnly(2007, 5, 22) },
-            new Livro { Id = 12, Titulo = "Neverwhere", NumPaginas = 370, Autor = "Neil Gaiman", Genero = "Fantasia Urbana", DataPublicacao = new DateOnly(1996, 9, 16) },
-            new Livro { Id = 13, Titulo = "A Pirâmide Vermelha", NumPaginas = 450, Autor = "Rick Riordan", Genero = "Fantasia / Mitologia Egípcia", DataPublicacao = new DateOnly(2010, 5, 4) }
-        };
+            _livroRepository = livroRepository;
+            _autorRepository = autorRepository;
+        }
 
+        
         public IActionResult Index() => View();
 
         public IActionResult Livro(int id)
         {
-            var livro = l1.FirstOrDefault(x => x.Id == id);
+            var livro = _livroRepository.BuscarTodosLivrosAsync();
             if (livro == null) return NotFound();
 
             ViewData["LivroId"] = id;
@@ -36,10 +28,128 @@ namespace Biblioteca.Controllers
 
         public IActionResult Autor(int id)
         {
-            var livro = l1.FirstOrDefault(x => x.Id == id);
+            var livro = _livroRepository.BuscarTodosLivrosAsync();
             if (livro == null) return RedirectToAction("Index");
 
             return View(livro);
         }
+
+        
+
+        public IActionResult CriarAutor()
+        {
+            return View();
+        }
+        [HttpPost]
+         public async Task<IActionResult> CriarAutorAsync(Autor autor)
+        {
+            await _autorRepository.CriarAutorAsync(autor);
+            return RedirectToAction("CriarAutor");
+        }    
+       
+        public async Task<IActionResult> CriarLivroAsync()
+        {
+            ViewBag.Autores = new SelectList(await _autorRepository.BuscarTodosAutoresAsync(),
+                        "Id",
+                        "Nome");
+
+            return View();
+        }
+        
+
+        [HttpPost]
+         public async Task<IActionResult> CriarLivroAsync(CriarLivroViewModel livroView)
+        {
+            Livro livro = new()
+            {
+                Titulo = livroView.Titulo,
+                NumPaginas = livroView.NumPaginas,
+                Id = livroView.Id,
+                Genero = livroView.Genero,
+                Sinopse = livroView.Sinopse,
+                DataPublicacao = livroView.DataPublicacao,
+            
+            };
+            await _livroRepository.CriarLivroAsync(livro, livroView.AutorId);
+            return RedirectToAction("CriarLivro");
+        }    
+        // CORREÇÃO: Carregar livro dinâmico por ID
+public async Task<IActionResult>livro(int id)
+{
+    var livro = await _livroRepository.BuscarPorIdAsync(id);
+    if (livro == null) return NotFound();
+
+    return View(livro);
+}
+
+// ==========================================
+// EDICAO DE LIVRO
+// ==========================================
+public async Task<IActionResult> EditarLivro(int id)
+{
+    var livro = await _livroRepository.BuscarPorIdAsync(id);
+    if (livro == null) return NotFound();
+
+    ViewBag.Autores = new SelectList(await _autorRepository.BuscarTodosAutoresAsync(), "Id", "Nome", livro.Autor?.Id);
+
+    var viewModel = new EditarLivroViewModel
+    {
+        Id = livro.Id,
+        Titulo = livro.Titulo,
+        NumPag = livro.NumPaginas,
+        Genero = livro.Genero,
+        DataPublicacao = livro.DataPublicacao,
+        AutorId = livro.Autor?.Id ?? 0
+    };
+
+    return View(viewModel);
+}
+
+[HttpPost]
+public async Task<IActionResult> EditarLivro(EditarLivroViewModel model)
+{
+    if (!ModelState.IsValid) return View(model);
+
+    Livro livro = new()
+    {
+        Id = model.Id,
+        Titulo = model.Titulo,
+        NumPaginas = model.NumPag,
+        Genero = model.Genero,
+        DataPublicacao = model.DataPublicacao
+    };
+
+    await _livroRepository.AtualizarLivroAsync(livro, model.AutorId);
+    return RedirectToAction("Livro", new { id = livro.Id });
+}
+
+// ==========================================
+// EXCLUSÃO DE LIVRO
+// ==========================================
+public async Task<IActionResult> DeletarLivro(int id)
+{
+    var livro = await _livroRepository.BuscarPorIdAsync(id);
+    if (livro == null) return NotFound();
+
+    var viewModel = new DeletarLivroViewModel
+    {
+        Id = livro.Id,
+        Titulo = livro.Titulo,
+        Autor = livro.Autor?.Nome,
+        
+        
+    };
+
+    return View(viewModel);
+}
+
+[HttpPost, ActionName("DeletarLivro")]
+public async Task<IActionResult> ConfirmarDeletar(int id)
+{
+    await _livroRepository.ExcluirLivroAsync(id);
+    return RedirectToAction("Index");
+}
+     
     }
+
 }

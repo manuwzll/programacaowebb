@@ -1,0 +1,23 @@
+@model Biblioteca.Models.DeletarLivroViewModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Excluir Livro";
+}
+
+<div class="container py-5 text-center">
+    <div style="max-width: 500px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <h2 style="font-family: 'Cinzel', serif; color: #cc0000; margin-bottom: 20px;">AVISO DE EXCLUSÃO</h2>
+        <p>Você tem certeza que deseja remover permanentemente o livro abaixo?</p>
+        
+        <div class="my-4" style="background: #f8f9fa; padding: 15px; border-radius: 5px;">
+            <h4><strong>@Model.Titulo</strong></h4>
+            <p class="text-muted">Autor: @Model.Autor</p>
+        </div>
+
+        <form asp-action="DeletarLivro" method="post">
+            <input type="hidden" asp-for="Id" />
+            <a asp-action="Livro" asp-route-id="@Model.Id" class="btn btn-light me-2">Voltar</a>
+            <button type="submit" class="btn btn-danger">Sim, Excluir</button>
+        </form>
+    </div>
+</div>

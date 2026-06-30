@@ -1,0 +1,69 @@
+/* Ajuste Global */
+[b-bunr9m1pqn] body {
+    background-color: #fdfaf5 !important;
+    margin: 0;
+    padding: 0;
+    color: #4b3621;
+    font-family: 'Serif', 'Georgia', serif;
+}
+
+/* Barra Superior Marrom do Figma */
+[b-bunr9m1pqn] .navbar-topo {
+    background-color: #4b3621;
+    color: white;
+    padding: 12px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+
+[b-bunr9m1pqn] .hero-section {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/img/biblioteca.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin: 20px;
+    border-radius: 15px;
+}
+
+/* Trava para os livros (O segredo para não ficarem gigantes) */
+[b-bunr9m1pqn] .book-card {
+    width: 190px; /* Tamanho exato para caber 3 ou 4 na linha */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+[b-bunr9m1pqn] .book-card img {
+    width: 100% !important;
+    height: 270px !important; /* Altura fixa para alinhar todas as capas */
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+[b-bunr9m1pqn] .book-card img:hover {
+    transform: translateY(-5px);
+}
+
+[b-bunr9m1pqn] .book-card h5 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+[b-bunr9m1pqn] .book-card p {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.3;
+}

@@ -1,0 +1,84 @@
+@model Biblioteca.Models.Autor;
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Cadastrar Autor";
+}
+
+<style>
+    .form-container {
+        max-width: 700px;
+        margin: 40px auto;
+        background: #fdfaf5;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border: 1px solid #d4c3a3;
+    }
+    .form-title {
+        font-family: 'Cinzel', serif;
+        color: #4b3621;
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 3px solid #c4a484;
+        padding-bottom: 15px;
+    }
+    .form-label {
+        font-weight: bold;
+        color: #4b3621;
+    }
+    .btn-cadastrar {
+        background: #4b3621;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        font-family: 'Cinzel', serif;
+        letter-spacing: 1px;
+    }
+    .btn-cancelar {
+        background: #8c7a6b;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+    }
+    textarea { resize: vertical; min-height: 180px; }
+</style>
+
+
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-title">CADASTRAR NOVO AUTOR</h2>
+
+        <form  asp-action="CriarAutor" method="post" asp-controller="Biblioteca">
+            <div class="mb-4">
+                <label class="form-label">Foto do Autor</label>
+                <input type="file"  class="form-control" accept="image/*" required />
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Nome Completo do Autor</label>
+                <input asp-for="Nome" type="text"  class="form-control" placeholder="Ex: J. R. R. Tolkien" required />
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <label class="form-label">Data de Nascimento</label>
+                    <input asp-for="DataNascimento" type="date"  class="form-control" required />
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label class="form-label">Data de Falecimento <small>(deixe em branco se vivo)</small></label>
+                    <input asp-for="DataMorte" type="date"  class="form-control" />
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Biografia</label>
+                <textarea asp-for="Bibliografia" class="form-control" placeholder="Escreva uma breve biografia do autor..." required></textarea>
+            </div>
+
+            <div class="text-center mt-5">
+                <a asp-action="Index" class="btn btn-cancelar me-3">Cancelar</a>
+                <button type="submit" class="btn btn-cadastrar">Cadastrar Autor</button>
+            </div>
+        </form>
+    </div>
+</div>
